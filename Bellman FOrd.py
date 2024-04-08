@@ -7,7 +7,8 @@ def bellman_ford(graph, source):
     
     for _ in range(num_nodes - 1):
         for node in range(num_nodes):
-            for neighbor, weight in enumerate(graph[node]):
+            for neighbor in range(num_nodes):
+                weight = graph[node][neighbor]
                 if weight != 0:
                     if distances[node] + weight < distances[neighbor]:
                         distances[neighbor] = distances[node] + weight
@@ -15,7 +16,8 @@ def bellman_ford(graph, source):
     
     # Check for negative cycles
     for node in range(num_nodes):
-        for neighbor, weight in enumerate(graph[node]):
+        for neighbor in range(num_nodes):
+            weight = graph[node][neighbor]
             if weight != 0:
                 if distances[node] + weight < distances[neighbor]:
                     raise ValueError("Graph contains negative cycle")

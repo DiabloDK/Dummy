@@ -21,7 +21,8 @@ def dijkstra(graph, source):
         
         visited.add(min_node)
         
-        for neighbor, weight in enumerate(graph[min_node]):
+        for neighbor in range(num_nodes):
+            weight = graph[min_node][neighbor]
             if weight != 0:
                 distance = min_distance + weight
                 if distance < distances[neighbor]:
@@ -39,9 +40,9 @@ def create_graph():
         graph.append([0] * num_vertices)
     
     for _ in range(num_edges):
-        start, end, weight = input("Enter edge (start end weight): ").split()
-        graph[int(start)][int(end)] = int(weight)
-        graph[int(end)][int(start)] = int(weight)
+        start, end, weight = map(int, input("Enter edge (start end weight): ").split())
+        graph[start][end] = weight
+        graph[end][start] = weight
     
     return graph
 
