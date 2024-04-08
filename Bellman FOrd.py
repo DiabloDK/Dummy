@@ -45,7 +45,6 @@ shortest_distances, predecessors = bellman_ford(graph, source_node)
 
 print("Shortest distances from node", source_node, ": ", shortest_distances)
 
-# Print shortest paths
 for node, distance in enumerate(shortest_distances):
     path = [node]
     predecessor = predecessors[node]
